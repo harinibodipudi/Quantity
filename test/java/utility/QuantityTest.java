@@ -50,4 +50,22 @@ public class QuantityTest {
 
         assertTrue(meter.equals(centimeter));
     }
+    @Test
+    void testExceptionIsThrownIfMeterOrCentimeterIsZero(){
+        Quantity meter = new Quantity(0,QuantityType.METER);
+        Quantity centimeter = new Quantity(100,QuantityType.CENTIMETER);
+
+        Exception exception = assertThrows(IllegalArgumentException.class,() ->{
+            meter.equals(centimeter);
+        });
+        assertEquals("Not allowed", exception.getMessage());
+    }
+
+    @Test
+    void testTrueIf100CentimeterIsEqualToOneTenthOfKm(){
+        Quantity centimeter = new Quantity(100,QuantityType.CENTIMETER);
+        Quantity kilometer = new Quantity(0.1,QuantityType.KILOMETER);
+
+        assertTrue(centimeter.equals(kilometer));
+    }
 }

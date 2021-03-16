@@ -1,10 +1,10 @@
 package utility;
 
 public class Quantity{
-    public int value;
+    public double value;
     public QuantityType type;
 
-    public Quantity(int value, QuantityType type) {
+    public Quantity(double value, QuantityType type) {
         this.value = value;
         this.type= type;
     }
@@ -20,6 +20,9 @@ public class Quantity{
         if(this.type!= quantity.type){
             if(this.type==QuantityType.METER && quantity.type==QuantityType.CENTIMETER){
                 return 100*this.value==quantity.value;
+            }
+            if(this.type==QuantityType.CENTIMETER && quantity.type==QuantityType.KILOMETER){
+                return this.value==1000*quantity.value;
             }
         }
         return quantity.value==this.value;
