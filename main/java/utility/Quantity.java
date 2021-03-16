@@ -1,6 +1,6 @@
 package utility;
 
-public class Quantity {
+public class Quantity{
     public int firstValue;
     public int secondValue;
 
@@ -11,6 +11,6 @@ public class Quantity {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        return firstValue==secondValue;
     }
 }
