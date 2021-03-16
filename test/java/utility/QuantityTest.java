@@ -1,22 +1,45 @@
 package utility;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class QuantityTest {
+
     @Test
-    public void testIfTwoQuantitiesAreEqual(){
-        Quantity newQuantity = new Quantity(1, QuantityValues.VALUEASONE.value);
+    public void testTrueIfOneCentimeterIsEqualToOneCentimeter(){
+        Quantity quantity = new Quantity(1,QuantityType.CENTIMETER);
+        Quantity otherQuantity = new Quantity(1, QuantityType.CENTIMETER);
 
-        assertTrue(newQuantity.equals(newQuantity));
-    }
-    @Test
-    public void testFalseIFTwoQuantitiesAreNotEqual(){
-
-        Quantity newQuantity = new Quantity(1,QuantityValues.VALUEASTWO.value);
-
-        assertFalse(newQuantity.equals(newQuantity));
+        assertTrue(quantity.equals(otherQuantity));
     }
 
+    @Test
+    void testFalseIfOneCentimeterIsNotEqualToTwoCentimeter() {
+        Quantity quantity = new Quantity(1, QuantityType.CENTIMETER);
+        Quantity otherQuantity = new Quantity(2, QuantityType.CENTIMETER);
+
+        assertFalse(quantity.equals(otherQuantity));
+    }
+
+    @Test
+    void testThrowsExceptionIfCentimeterValueIsZero(){
+        Quantity quantity = new Quantity(0,QuantityType.CENTIMETER);
+        Quantity otherQuantity = new Quantity(4,QuantityType.CENTIMETER);
+
+        Exception exception = assertThrows(IllegalArgumentException.class,() ->{
+            quantity.equals(otherQuantity);
+        });
+        assertEquals("Not allowed", exception.getMessage());
+    }
+
+    @Test
+    void testThrowsExceptionIfCentimeterValueIsLessThanZero(){
+        Quantity quantity = new Quantity(-4,QuantityType.CENTIMETER);
+        Quantity otherQuantity = new Quantity(4,QuantityType.CENTIMETER);
+
+        Exception exception = assertThrows(IllegalArgumentException.class,() ->{
+            quantity.equals(otherQuantity);
+        });
+        assertEquals("Not allowed", exception.getMessage());
+    }
 }

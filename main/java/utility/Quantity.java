@@ -1,16 +1,22 @@
 package utility;
 
 public class Quantity{
-    public int firstValue;
-    public int secondValue;
+    public int value;
+    public QuantityType type;
 
-    public Quantity(int firstValue, int secondValue) {
-        this.firstValue = firstValue;
-        this.secondValue = secondValue;
+    public Quantity(int value, QuantityType type) {
+        this.value = value;
+        this.type= type;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return firstValue==secondValue;
+        if(this == obj)return true;
+        if(obj == null || getClass() != obj.getClass())return false;
+        Quantity quantity=(Quantity)obj;
+        if(quantity.value<=0 || value<=0){
+            throw new IllegalArgumentException("Not allowed");
+        }
+        return quantity.value==this.value;
     }
 }
