@@ -17,6 +17,11 @@ public class Quantity{
         if(quantity.value<=0 || value<=0){
             throw new IllegalArgumentException("Not allowed");
         }
+        if(this.type!= quantity.type){
+            if(this.type==QuantityType.METER && quantity.type==QuantityType.CENTIMETER){
+                return 100*this.value==quantity.value;
+            }
+        }
         return quantity.value==this.value;
     }
 }

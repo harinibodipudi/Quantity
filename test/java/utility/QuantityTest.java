@@ -29,7 +29,7 @@ public class QuantityTest {
         Exception exception = assertThrows(IllegalArgumentException.class,() ->{
             quantity.equals(otherQuantity);
         });
-        
+
         assertEquals("Not allowed", exception.getMessage());
     }
 
@@ -42,5 +42,12 @@ public class QuantityTest {
             quantity.equals(otherQuantity);
         });
         assertEquals("Not allowed", exception.getMessage());
+    }
+    @Test
+    void testTrueIf1MeterIsEqualTo100Centimeter(){
+        Quantity meter = new Quantity(1,QuantityType.METER);
+        Quantity centimeter = new Quantity(100,QuantityType.CENTIMETER);
+
+        assertTrue(meter.equals(centimeter));
     }
 }
