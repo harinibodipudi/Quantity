@@ -29,6 +29,7 @@ public class QuantityTest {
         Exception exception = assertThrows(IllegalArgumentException.class,() ->{
             quantity.equals(otherQuantity);
         });
+        
         assertEquals("Not allowed", exception.getMessage());
     }
 
