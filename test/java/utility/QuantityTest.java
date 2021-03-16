@@ -68,4 +68,18 @@ public class QuantityTest {
 
         assertTrue(centimeter.equals(kilometer));
     }
+
+    @Test
+
+    public void testIfSumOfOneMeterAnd100CentimeterIsEqualTwoMeter() {
+        Quantity meter = new Quantity(1,QuantityType.METER);
+        Quantity centimeter = new Quantity(100, QuantityType.CENTIMETER);
+        Quantity resultantMeter = new Quantity(2,QuantityType.METER);
+
+        double sumofmeterandcentimeter=Quantity.sumOfMeterAndCentimeter(meter.value, centimeter.value);
+        Quantity newCentimeter = new Quantity(sumofmeterandcentimeter,QuantityType.CENTIMETER);
+
+        assertTrue(resultantMeter.equals(newCentimeter));
+
+    }
 }

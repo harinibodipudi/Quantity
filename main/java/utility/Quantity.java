@@ -27,4 +27,9 @@ public class Quantity{
         }
         return quantity.value==this.value;
     }
+
+    public static double sumOfMeterAndCentimeter(double meter, double centimeter){
+        return (meter*100)+centimeter;
+    }
+
 }
