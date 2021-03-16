@@ -32,4 +32,8 @@ public class Quantity{
         return (meter*100)+centimeter;
     }
 
+    public static double sumOfKilometerAndCentimeter(double centimeter, double kilometer){
+        return (kilometer*100000)+centimeter;
+    }
+
 }
