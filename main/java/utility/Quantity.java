@@ -39,7 +39,12 @@ public class Quantity{
     }
 
     public static double differenceOfMeterAndCentimeterInMeter(double meter, double centimeter){
+
         return (meter)-(0.01*centimeter);
+    }
+
+    public static double differenceOfCentimeterAndMeterInCentimeter(double centimeter, double meter){
+        return (centimeter)-(100*meter);
     }
 
 }

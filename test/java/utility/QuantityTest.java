@@ -108,4 +108,17 @@ public class QuantityTest {
         assertTrue(resultantMeter.equals(newMeter));
 
     }
+
+    @Test
+    public void testIfDifferenceOf2000CentimeterAnd1mIsEqualTo1900Centimeter() {
+        Quantity centimeter = new Quantity(2000, QuantityType.CENTIMETER);
+        Quantity meter =  new Quantity(1, QuantityType.METER);
+        Quantity resultantCentimeter = new Quantity(1900,QuantityType.CENTIMETER);
+
+        double differenceOfCentimeterAndKilometer=Quantity.differenceOfCentimeterAndMeterInCentimeter(centimeter.value,meter.value);
+        Quantity newCentimeter = new Quantity(differenceOfCentimeterAndKilometer,QuantityType.CENTIMETER);
+
+        assertTrue(resultantCentimeter.equals(newCentimeter));
+
+    }
 }
