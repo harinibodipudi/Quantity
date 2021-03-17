@@ -76,7 +76,7 @@ public class QuantityTest {
         Quantity centimeter = new Quantity(100, QuantityType.CENTIMETER);
         Quantity resultantMeter = new Quantity(2,QuantityType.METER);
 
-        double sumofmeterandcentimeter=Quantity.sumOfMeterAndCentimeter(meter.value, centimeter.value);
+        double sumofmeterandcentimeter=Quantity.sumOfMeterAndCentimeterInCentimeter(meter.value, centimeter.value);
         Quantity newCentimeter = new Quantity(sumofmeterandcentimeter,QuantityType.CENTIMETER);
 
         assertTrue(resultantMeter.equals(newCentimeter));
@@ -90,10 +90,22 @@ public class QuantityTest {
         Quantity kilometer =  new Quantity(1, QuantityType.KILOMETER);
         Quantity resultantCentimeter = new Quantity(100200,QuantityType.CENTIMETER);
 
-        double sumofKilometerAndCentimeter=Quantity.sumOfKilometerAndCentimeter(centimeter.value,kilometer.value);
+        double sumofKilometerAndCentimeter=Quantity.sumOfKilometerAndCentimeterInCentimeter(centimeter.value,kilometer.value);
         Quantity newCentimeter = new Quantity(sumofKilometerAndCentimeter,QuantityType.CENTIMETER);
 
         assertTrue(resultantCentimeter.equals(newCentimeter));
+
+    }
+    @Test
+    public void testIfDifferenceOf1MeterAnd50CmIsEqualToMeter() {
+        Quantity meter = new Quantity(1, QuantityType.METER);
+        Quantity centimeter =  new Quantity(50, QuantityType.CENTIMETER);
+        Quantity resultantMeter = new Quantity(0.5,QuantityType.METER);
+
+        double differenceOfKilometerAndCentimeter=Quantity.differenceOfMeterAndCentimeterInMeter(meter.value,centimeter.value);
+        Quantity newMeter = new Quantity(differenceOfKilometerAndCentimeter,QuantityType.METER);
+
+        assertTrue(resultantMeter.equals(newMeter));
 
     }
 }

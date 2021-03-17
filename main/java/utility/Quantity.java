@@ -28,12 +28,18 @@ public class Quantity{
         return quantity.value==this.value;
     }
 
-    public static double sumOfMeterAndCentimeter(double meter, double centimeter){
+    public static double sumOfMeterAndCentimeterInCentimeter(double meter, double centimeter){
+
         return (meter*100)+centimeter;
+
     }
 
-    public static double sumOfKilometerAndCentimeter(double centimeter, double kilometer){
+    public static double sumOfKilometerAndCentimeterInCentimeter(double centimeter, double kilometer){
         return (kilometer*100000)+centimeter;
+    }
+
+    public static double differenceOfMeterAndCentimeterInMeter(double meter, double centimeter){
+        return (meter)-(0.01*centimeter);
     }
 
 }
