@@ -8,6 +8,12 @@ public class Quantity{
         this.value = value;
         this.type= type;
     }
+    public static double convertingCentimeterToMeter(double centimeter){
+        return centimeter*0.01;
+    }
+    public static double meterToKilometer(double meter){
+        return meter*0.001;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -19,23 +25,23 @@ public class Quantity{
         }
         if(this.type!= quantity.type){
             if(this.type==QuantityType.METER && quantity.type==QuantityType.CENTIMETER){
-                return 100*this.value==quantity.value;
+                return this.value==convertingCentimeterToMeter(quantity.value);
             }
             if(this.type==QuantityType.CENTIMETER && quantity.type==QuantityType.KILOMETER){
-                return this.value==1000*quantity.value;
+                return meterToKilometer(convertingCentimeterToMeter(this.value))==quantity.value;
             }
         }
         return quantity.value==this.value;
     }
 
     public static double sumOfMeterAndCentimeterInCentimeter(double meter, double centimeter){
-
-        return (meter*100)+centimeter;
+        double centimeterInMeter = convertingCentimeterToMeter(centimeter);
+        return (meter);
 
     }
 
     public static double sumOfKilometerAndCentimeterInCentimeter(double centimeter, double kilometer){
-        return (kilometer*100000)+centimeter;
+        return (kilometer)+centimeter;
     }
 
     public static double differenceOfMeterAndCentimeterInMeter(double meter, double centimeter){
